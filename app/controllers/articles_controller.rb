@@ -7,14 +7,16 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
-		@comment = Comment.new(comment_params)
-		@comment.article_id = @article.id
 
-		if @comment.save
-			redirect_to article_path(@article)
+		if @article.save
+			redirect_to @article
 		else
-			render 'articles/show'
+			render 'new'
 		end
+
+		@comment = Comment.new
+		@comments = Comment.all
+		@comment.article_id = @article.id
 	end
 
 	def show

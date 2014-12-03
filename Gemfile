@@ -33,4 +33,4 @@ gem 'bootstrap-sass'
 gem 'paperclip', '~> 3.0'
 
 # Better errors gem
-gem 'better_errors', '~> 2.0.0'
+#gem 'better_errors', '~> 2.0.0'
