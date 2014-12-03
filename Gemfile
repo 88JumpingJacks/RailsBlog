@@ -29,3 +29,5 @@ gem 'spring',        group: :development
 # Boostrap yay
 gem 'bootstrap-sass'
 
+# Paperclip for uploading photos
+gem 'paperclip', '~> 3.0'
