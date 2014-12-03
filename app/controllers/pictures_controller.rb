@@ -1,16 +1,11 @@
 class PicturesController < ApplicationController
-   http_basic_authenticate_with name: "heha", password: "noice", only: :destroy
+  http_basic_authenticate_with name: "heha", password: "noice", only: :destroy
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   # GET /pictures
   # GET /pictures.json
   def index
     @pictures = Picture.all
-  end
-
-  # GET /pictures/1
-  # GET /pictures/1.json
-  def show
   end
 
   # GET /pictures/new
@@ -31,8 +26,8 @@ class PicturesController < ApplicationController
     if @picture.save
       redirect_to article_path(@article)
     else
-      render action: 'new'
-     end
+      render 'articles/show'
+    end
   end
 
   # PATCH/PUT /pictures/1
@@ -47,8 +42,10 @@ class PicturesController < ApplicationController
   # DELETE /pictures/1
   # DELETE /pictures/1.json
   def destroy
-    @picture.destroy
+    if @picture.destroy
       redirect_to pictures_url, notice: 'Picture was successfully destroyed.'
+    else
+      render 'articles/show'
     end
   end
 

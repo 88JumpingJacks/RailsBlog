@@ -7,19 +7,22 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
+		@comment = Comment.new(comment_params)
+		@comment.article_id = @article.id
 
-		if @article.save
-			redirect_to @article
+		if @comment.save
+			redirect_to article_path(@article)
 		else
-			render 'new'
+			render 'articles/show'
 		end
 	end
 
 	def show
 		@article = Article.find(params[:id])
 		
-		@pictures = @article.pictures
-		@picture = Picture.new
+		# Implement picture uploading later
+		#@pictures = @article.pictures
+		#@picture = Picture.new
 
 		@comments = @article.comments
 		@comment = Comment.new

@@ -31,3 +31,6 @@ gem 'bootstrap-sass'
 
 # Paperclip for uploading photos
 gem 'paperclip', '~> 3.0'
+
+# Better errors gem
+gem 'better_errors', '~> 2.0.0'
