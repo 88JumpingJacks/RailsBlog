@@ -17,6 +17,10 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article = Article.find(params[:id])
+		
+		@pictures = @article.pictures
+		@picture = Picture.new
+
 		@comments = @article.comments
 		@comment = Comment.new
 	end

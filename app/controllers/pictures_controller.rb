@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+   http_basic_authenticate_with name: "heha", password: "noice", only: :destroy
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   # GET /pictures
@@ -24,9 +25,11 @@ class PicturesController < ApplicationController
   # POST /pictures
   # POST /pictures.json
   def create
+    @article = Article.find(params[:article_id])
     @picture = Picture.new(picture_params)
+    @picture.article_id = @article.id
     if @picture.save
-      redirect_to @picture, notice: 'Picture was successfully created.'
+      redirect_to article_path(@article)
     else
       render action: 'new'
      end
